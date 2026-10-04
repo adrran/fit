@@ -1,0 +1,26 @@
+{
+  "questions": [
+    { "id": "energie",  "label": "Energie",      "opts": ["müde", "okay", "fit"] },
+    { "id": "hunger",   "label": "Hunger",       "opts": ["wenig", "normal", "stark"] },
+    { "id": "schlaf",   "label": "Schlaf",       "opts": ["schlecht", "okay", "gut"] },
+    { "id": "kater",    "label": "Muskelkater",  "opts": ["keiner", "leicht", "stark"] },
+    { "id": "stimmung", "label": "Stimmung",     "opts": ["mies", "okay", "gut"] }
+  ],
+  "rules": [
+    { "if": { "energie": 0, "training": true }, "tip": "Wenig Energie und Training steht an: Mach die 20-Minuten-Version. Die zählt voll." },
+    { "if": { "energie": 0 }, "tip": "Müde: 10 Minuten draußen gehen weckt oft mehr als Kaffee. Vorher ein großes Glas Wasser." },
+    { "if": { "energie": 2, "training": true }, "tip": "Gute Energie: Heute bei jeder Übung sauber ans obere Ende der Wiederholungen gehen – so kommt die nächste Stufe." },
+    { "if": { "hunger": 2, "proteinLow": true }, "tip": "Du hast heute noch wenig Protein gegessen. Skyr oder Quark als Snack macht lange satt." },
+    { "if": { "hunger": 2, "abend": true }, "tip": "Abendhunger ist im Defizit normal. Gurke, Tomaten oder TK-Beeren gehen fast ohne Kalorien." },
+    { "if": { "hunger": 2 }, "tip": "Starker Hunger: Vor der nächsten Mahlzeit ein Glas Wasser, dann zuerst den Fleisch-/Quark-Teil essen." },
+    { "if": { "hunger": 0 }, "tip": "Wenig Hunger? Iss die Mahlzeiten trotzdem – zu wenig essen kostet Muskeln und kommt später als Heißhunger zurück." },
+    { "if": { "schlaf": 0, "training": true }, "tip": "Nach einer schlechten Nacht: Training ja, aber eine Stufe leichter ist völlig okay." },
+    { "if": { "schlaf": 0 }, "tip": "Schlechter Schlaf macht hungriger. Heute nichts erzwingen und abends das Handy eine Stunde früher weglegen." },
+    { "if": { "kater": 2 }, "tip": "Starker Muskelkater: Lockeres Gehen hilft. Steht Training an, nimm die 20-Minuten-Version mit leichterer Stufe." },
+    { "if": { "kater": 1, "training": true }, "tip": "Leichter Muskelkater ist normal und kein Grund auszusetzen." },
+    { "if": { "stimmung": 0, "behind": true }, "tip": "Die Woche lief nicht rund – egal. Es zählt nur die nächste Mahlzeit. Fang einfach wieder an." },
+    { "if": { "stimmung": 0 }, "tip": "Mieser Tag? Du musst nicht perfekt sein, 80 % reichen. Ein Spaziergang hebt die Stimmung messbar." },
+    { "if": { "stimmung": 2 }, "tip": "Gute Laune nutzen: Heute gleich für morgen mitkochen." },
+    { "if": { "behind": true }, "tip": "Diese Woche unter 80 %. Unter Körper → Gewicht → „Wo es hakt“ siehst du, welche Mahlzeit am häufigsten abweicht – die tauschen." }
+  ]
+}

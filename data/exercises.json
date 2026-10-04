@@ -1,0 +1,829 @@
+{
+  "warmup": "Aufwärmen (2 Min.): auf der Stelle gehen, Arme kreisen, 10 langsame halbe Kniebeugen.",
+  "shortSets": 2,
+  "plans": [
+    {
+      "name": "Ganzkörper A",
+      "items": [
+        {
+          "ex": "kniebeuge",
+          "sets": 3,
+          "reps": [
+            8,
+            12
+          ],
+          "rest": 90
+        },
+        {
+          "ex": "liegestuetz",
+          "sets": 3,
+          "reps": [
+            8,
+            12
+          ],
+          "rest": 90
+        },
+        {
+          "ex": "rudern",
+          "sets": 3,
+          "reps": [
+            8,
+            12
+          ],
+          "rest": 90
+        },
+        {
+          "ex": "bruecke",
+          "sets": 3,
+          "reps": [
+            10,
+            15
+          ],
+          "rest": 60
+        },
+        {
+          "ex": "plank",
+          "sets": 3,
+          "reps": [
+            20,
+            40
+          ],
+          "rest": 60
+        }
+      ],
+      "short": [
+        "kniebeuge",
+        "liegestuetz",
+        "rudern",
+        "bruecke"
+      ]
+    },
+    {
+      "name": "Ganzkörper B",
+      "items": [
+        {
+          "ex": "ausfallschritt",
+          "sets": 3,
+          "reps": [
+            8,
+            12
+          ],
+          "rest": 90
+        },
+        {
+          "ex": "liegestuetz",
+          "sets": 3,
+          "reps": [
+            8,
+            12
+          ],
+          "rest": 90
+        },
+        {
+          "ex": "rudern",
+          "sets": 3,
+          "reps": [
+            8,
+            12
+          ],
+          "rest": 90
+        },
+        {
+          "ex": "ruecken",
+          "sets": 3,
+          "reps": [
+            10,
+            15
+          ],
+          "rest": 60
+        },
+        {
+          "ex": "seitstuetz",
+          "sets": 2,
+          "reps": [
+            15,
+            30
+          ],
+          "rest": 60
+        }
+      ],
+      "short": [
+        "ausfallschritt",
+        "liegestuetz",
+        "rudern",
+        "ruecken"
+      ]
+    }
+  ],
+  "exercises": {
+    "kniebeuge": {
+      "unit": "Wdh.",
+      "easier": "Höheren Stuhl oder Sofa nehmen, dabei am Türrahmen festhalten.",
+      "levels": [
+        {
+          "name": "Kniebeuge auf Stuhl",
+          "desc": "Vor einen stabilen Stuhl stellen, Füße schulterbreit. Langsam hinsetzen, nur kurz antippen, wieder aufstehen.",
+          "tips": "Knie zeigen in Richtung Fußspitzen. Fersen bleiben am Boden, Arme nach vorn als Gegengewicht."
+        },
+        {
+          "name": "Freie Kniebeuge",
+          "desc": "Ohne Stuhl so tief wie sauber möglich, mindestens Oberschenkel waagerecht.",
+          "tips": "Brust aufrecht, 2 Sek. runter, 1 Sek. hoch."
+        },
+        {
+          "name": "Kniebeuge mit Pause",
+          "desc": "Wie die freie Kniebeuge, unten 3 Sek. halten.",
+          "tips": "In der Pause Spannung halten, nicht in die Knie fallen lassen."
+        },
+        {
+          "name": "Bulgarische Kniebeuge (pro Bein)",
+          "desc": "Hinteren Fuß auf das Sofa legen, mit dem vorderen Bein senkrecht runter und hoch.",
+          "tips": "Vorderes Knie bleibt über dem Fuß, Oberkörper leicht nach vorn."
+        }
+      ],
+      "anim": {
+        "props": [
+          "M20 62h22",
+          "M22 62v28",
+          "M40 62v28",
+          "M22 62v-26"
+        ],
+        "a": {
+          "H": [
+            54,
+            13
+          ],
+          "N": [
+            54,
+            21
+          ],
+          "P": [
+            54,
+            50
+          ],
+          "K": [
+            55,
+            70
+          ],
+          "F": [
+            54,
+            90
+          ],
+          "E": [
+            64,
+            24
+          ],
+          "W": [
+            77,
+            23
+          ]
+        },
+        "b": {
+          "H": [
+            60,
+            30
+          ],
+          "N": [
+            56,
+            37
+          ],
+          "P": [
+            38,
+            61
+          ],
+          "K": [
+            58,
+            64
+          ],
+          "F": [
+            54,
+            90
+          ],
+          "E": [
+            68,
+            38
+          ],
+          "W": [
+            82,
+            36
+          ]
+        }
+      }
+    },
+    "ausfallschritt": {
+      "unit": "Wdh. pro Bein",
+      "easier": "Kleinerer Schritt, weniger tief, mit beiden Händen festhalten.",
+      "levels": [
+        {
+          "name": "Ausfallschritt rückwärts mit Stütze",
+          "desc": "Neben einer Stuhllehne stehen, ein Bein nach hinten setzen, hinteres Knie Richtung Boden senken, zurück.",
+          "tips": "Kein Sprung, ruhig absetzen. Vorderes Knie bleibt über dem Fuß."
+        },
+        {
+          "name": "Ausfallschritt rückwärts frei",
+          "desc": "Wie oben, ohne Festhalten.",
+          "tips": "Oberkörper aufrecht, Gewicht auf der vorderen Ferse."
+        },
+        {
+          "name": "Split Squat mit Pause",
+          "desc": "In Schrittstellung bleiben, runter, unten 2 Sek. halten, hoch.",
+          "tips": "Hinteres Knie schwebt knapp über dem Boden."
+        }
+      ],
+      "anim": {
+        "props": [],
+        "a": {
+          "H": [
+            70,
+            13
+          ],
+          "N": [
+            70,
+            21
+          ],
+          "P": [
+            70,
+            50
+          ],
+          "K": [
+            70,
+            70
+          ],
+          "F": [
+            70,
+            90
+          ],
+          "E": [
+            72,
+            36
+          ],
+          "W": [
+            73,
+            50
+          ]
+        },
+        "b": {
+          "H": [
+            58,
+            33
+          ],
+          "N": [
+            58,
+            40
+          ],
+          "P": [
+            58,
+            68
+          ],
+          "K": [
+            74,
+            70
+          ],
+          "F": [
+            72,
+            90
+          ],
+          "K2": [
+            50,
+            86
+          ],
+          "F2": [
+            34,
+            90
+          ],
+          "E": [
+            60,
+            54
+          ],
+          "W": [
+            61,
+            67
+          ]
+        }
+      }
+    },
+    "liegestuetz": {
+      "unit": "Wdh.",
+      "easier": "Näher an die Wand stellen.",
+      "levels": [
+        {
+          "name": "Wand-Liegestütz",
+          "desc": "Hände schulterbreit auf Brusthöhe an die Wand, Füße einen großen Schritt weg. Brust zur Wand, wegdrücken.",
+          "tips": "Körper bleibt gerade wie ein Brett, Ellbogen ca. 45° vom Körper."
+        },
+        {
+          "name": "Liegestütz an der Arbeitsplatte",
+          "desc": "Hände auf eine stabile Küchenarbeitsplatte, Körper schräg. Brust zur Kante, wegdrücken.",
+          "tips": "Nur an Möbeln, die sicher nicht rutschen. Bauch fest."
+        },
+        {
+          "name": "Liegestütz am Sofa / Bett",
+          "desc": "Hände auf die Sitzfläche eines an die Wand geschobenen Sofas, Körper flacher.",
+          "tips": "Brust bis kurz über die Kante, Kopf in Verlängerung der Wirbelsäule."
+        },
+        {
+          "name": "Liegestütz am Boden",
+          "desc": "Klassischer Liegestütz.",
+          "tips": "Hüfte nicht durchhängen lassen. Lieber weniger, dafür sauber."
+        }
+      ],
+      "anim": {
+        "props": [
+          "M84 6v84"
+        ],
+        "a": {
+          "H": [
+            57,
+            24
+          ],
+          "N": [
+            54,
+            31
+          ],
+          "P": [
+            46,
+            57
+          ],
+          "K": [
+            41,
+            74
+          ],
+          "F": [
+            36,
+            90
+          ],
+          "E": [
+            68,
+            31
+          ],
+          "W": [
+            83,
+            31
+          ]
+        },
+        "b": {
+          "H": [
+            71,
+            26
+          ],
+          "N": [
+            68,
+            33
+          ],
+          "P": [
+            52,
+            61
+          ],
+          "K": [
+            44,
+            76
+          ],
+          "F": [
+            36,
+            90
+          ],
+          "E": [
+            70,
+            46
+          ],
+          "W": [
+            83,
+            31
+          ]
+        }
+      }
+    },
+    "rudern": {
+      "unit": "Wdh.",
+      "easier": "Aufrechter stehen (Füße weiter weg vom Türrahmen).",
+      "levels": [
+        {
+          "name": "Türrahmen-Rudern steil",
+          "desc": "In den offenen Türrahmen stellen, beidhändig den Rahmen greifen, leicht nach hinten lehnen, dich zum Rahmen ziehen.",
+          "tips": "Nur am Rahmen ziehen, nie an der Türklinke. Schulterblätter zusammen."
+        },
+        {
+          "name": "Türrahmen-Rudern flacher",
+          "desc": "Füße näher an den Rahmen, dadurch weiter zurücklehnen.",
+          "tips": "Körper gerade, langsam ablassen."
+        },
+        {
+          "name": "Einarmiges Türrahmen-Rudern",
+          "desc": "Seitlich zum Rahmen, eine Hand greift, zurücklehnen, ziehen. Pro Seite zählen.",
+          "tips": "Nicht verdrehen, Bauch fest."
+        }
+      ],
+      "anim": {
+        "props": [
+          "M82 6v84"
+        ],
+        "a": {
+          "H": [
+            47,
+            34
+          ],
+          "N": [
+            52,
+            40
+          ],
+          "P": [
+            61,
+            63
+          ],
+          "K": [
+            67,
+            77
+          ],
+          "F": [
+            72,
+            90
+          ],
+          "E": [
+            66,
+            41
+          ],
+          "W": [
+            81,
+            42
+          ]
+        },
+        "b": {
+          "H": [
+            60,
+            30
+          ],
+          "N": [
+            64,
+            37
+          ],
+          "P": [
+            68,
+            63
+          ],
+          "K": [
+            71,
+            77
+          ],
+          "F": [
+            72,
+            90
+          ],
+          "E": [
+            64,
+            50
+          ],
+          "W": [
+            81,
+            42
+          ]
+        }
+      }
+    },
+    "bruecke": {
+      "unit": "Wdh.",
+      "easier": "Nur halb so hoch heben.",
+      "levels": [
+        {
+          "name": "Glute Bridge",
+          "desc": "Rückenlage, Füße aufgestellt. Becken heben, bis Knie-Hüfte-Schulter eine Linie bilden, ablassen.",
+          "tips": "Aus dem Po drücken, nicht ins Hohlkreuz."
+        },
+        {
+          "name": "Glute Bridge mit 2 Sek. Halten",
+          "desc": "Wie oben, oben 2 Sek. halten.",
+          "tips": "Po oben fest anspannen."
+        },
+        {
+          "name": "Einbeinige Glute Bridge",
+          "desc": "Ein Bein gestreckt in der Luft, mit dem anderen heben. Pro Bein zählen.",
+          "tips": "Becken bleibt gerade."
+        },
+        {
+          "name": "Hip Thrust am Sofa",
+          "desc": "Schulterblätter an die Sofakante lehnen, Becken heben und senken.",
+          "tips": "Kinn leicht zur Brust."
+        }
+      ],
+      "anim": {
+        "props": [],
+        "a": {
+          "H": [
+            14,
+            83
+          ],
+          "N": [
+            22,
+            86
+          ],
+          "P": [
+            50,
+            86
+          ],
+          "K": [
+            64,
+            70
+          ],
+          "F": [
+            76,
+            90
+          ],
+          "E": [
+            34,
+            88
+          ],
+          "W": [
+            46,
+            88
+          ]
+        },
+        "b": {
+          "H": [
+            14,
+            83
+          ],
+          "N": [
+            22,
+            86
+          ],
+          "P": [
+            46,
+            72
+          ],
+          "K": [
+            66,
+            63
+          ],
+          "F": [
+            76,
+            90
+          ],
+          "E": [
+            34,
+            88
+          ],
+          "W": [
+            46,
+            88
+          ]
+        }
+      }
+    },
+    "ruecken": {
+      "unit": "Wdh.",
+      "easier": "Nur Arme abwechselnd heben.",
+      "levels": [
+        {
+          "name": "Y-Heben in Bauchlage",
+          "desc": "Bauchlage, Arme in Y-Form nach vorn. Arme 2 Sek. anheben, ablassen.",
+          "tips": "Daumen nach oben, Blick zum Boden."
+        },
+        {
+          "name": "Superman",
+          "desc": "Arme und Beine gleichzeitig leicht anheben, ablassen.",
+          "tips": "Kleine Bewegung reicht, kein Schwung."
+        },
+        {
+          "name": "Superman mit 3 Sek. Halten",
+          "desc": "Wie Superman, oben 3 Sek. halten.",
+          "tips": "Ruhig weiteratmen."
+        }
+      ],
+      "anim": {
+        "props": [],
+        "a": {
+          "H": [
+            82,
+            84
+          ],
+          "N": [
+            74,
+            87
+          ],
+          "P": [
+            46,
+            87
+          ],
+          "K": [
+            30,
+            88
+          ],
+          "F": [
+            14,
+            88
+          ],
+          "E": [
+            88,
+            88
+          ],
+          "W": [
+            98,
+            88
+          ]
+        },
+        "b": {
+          "H": [
+            83,
+            79
+          ],
+          "N": [
+            74,
+            84
+          ],
+          "P": [
+            46,
+            87
+          ],
+          "K": [
+            30,
+            88
+          ],
+          "F": [
+            14,
+            88
+          ],
+          "E": [
+            87,
+            78
+          ],
+          "W": [
+            97,
+            72
+          ]
+        }
+      }
+    },
+    "plank": {
+      "unit": "Sek.",
+      "easier": "Noch höher abstützen (Wand).",
+      "levels": [
+        {
+          "name": "Unterarmstütz an der Arbeitsplatte",
+          "desc": "Unterarme auf die Arbeitsplatte, Körper schräg und gerade halten.",
+          "tips": "Bauch und Po fest, normal atmen."
+        },
+        {
+          "name": "Unterarmstütz auf Knien",
+          "desc": "Unterarme am Boden, Knie am Boden, Körper von Knie bis Kopf gerade.",
+          "tips": "Kein Hohlkreuz."
+        },
+        {
+          "name": "Unterarmstütz",
+          "desc": "Unterarme und Fußspitzen am Boden, Körper gerade.",
+          "tips": "Lieber kürzer und sauber halten."
+        }
+      ],
+      "anim": {
+        "props": [
+          "M76 50h22",
+          "M80 50v40"
+        ],
+        "a": {
+          "H": [
+            81,
+            33
+          ],
+          "N": [
+            76,
+            38
+          ],
+          "P": [
+            55,
+            64
+          ],
+          "K": [
+            42,
+            77
+          ],
+          "F": [
+            30,
+            90
+          ],
+          "E": [
+            78,
+            50
+          ],
+          "W": [
+            92,
+            50
+          ]
+        },
+        "b": {
+          "H": [
+            81,
+            33
+          ],
+          "N": [
+            76,
+            38
+          ],
+          "P": [
+            55,
+            62
+          ],
+          "K": [
+            42,
+            76
+          ],
+          "F": [
+            30,
+            90
+          ],
+          "E": [
+            78,
+            50
+          ],
+          "W": [
+            92,
+            50
+          ]
+        }
+      }
+    },
+    "seitstuetz": {
+      "unit": "Sek. pro Seite",
+      "easier": "Steiler an der Wand.",
+      "levels": [
+        {
+          "name": "Seitstütz an der Wand",
+          "desc": "Seitlich zur Wand, Unterarm an die Wand, Füße weg, Körper gerade halten.",
+          "tips": "Hüfte nicht abknicken."
+        },
+        {
+          "name": "Seitstütz auf Knien",
+          "desc": "Seitlich auf Unterarm und Knie, Hüfte heben.",
+          "tips": "Ellbogen unter der Schulter."
+        },
+        {
+          "name": "Seitstütz",
+          "desc": "Seitlich auf Unterarm und Fußkante, Körper gerade.",
+          "tips": "Füße übereinander oder versetzt."
+        }
+      ],
+      "anim": {
+        "props": [
+          "M84 6v84"
+        ],
+        "a": {
+          "H": [
+            70,
+            23
+          ],
+          "N": [
+            67,
+            30
+          ],
+          "P": [
+            54,
+            56
+          ],
+          "K": [
+            47,
+            73
+          ],
+          "F": [
+            40,
+            90
+          ],
+          "E": [
+            83,
+            40
+          ],
+          "W": [
+            83,
+            26
+          ]
+        },
+        "b": {
+          "H": [
+            70,
+            23
+          ],
+          "N": [
+            67,
+            30
+          ],
+          "P": [
+            52,
+            58
+          ],
+          "K": [
+            46,
+            74
+          ],
+          "F": [
+            40,
+            90
+          ],
+          "E": [
+            83,
+            40
+          ],
+          "W": [
+            83,
+            26
+          ]
+        }
+      }
+    }
+  }
+}

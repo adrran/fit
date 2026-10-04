@@ -1,0 +1,1212 @@
+{
+  "areas": [
+    "Obst & Gemüse",
+    "Fleisch & Fisch",
+    "Kühlregal",
+    "Tiefkühl",
+    "Trockenware & Konserven"
+  ],
+  "ingredients": {
+    "Haferflocken": {
+      "area": "Trockenware & Konserven",
+      "kcal": 370,
+      "p": 13.5,
+      "c": 58.7,
+      "f": 7,
+      "pantry": true
+    },
+    "Reis": {
+      "area": "Trockenware & Konserven",
+      "kcal": 350,
+      "p": 7,
+      "c": 78,
+      "f": 0.6,
+      "pantry": true
+    },
+    "Reiswaffeln": {
+      "area": "Trockenware & Konserven",
+      "kcal": 390,
+      "p": 8,
+      "c": 81,
+      "f": 3,
+      "pantry": true
+    },
+    "Passierte Tomaten": {
+      "area": "Trockenware & Konserven",
+      "kcal": 33,
+      "p": 1.5,
+      "c": 6,
+      "f": 0.2,
+      "pantry": true
+    },
+    "Thunfisch (Dose, Wasser)": {
+      "area": "Trockenware & Konserven",
+      "kcal": 110,
+      "p": 25,
+      "c": 0,
+      "f": 1
+    },
+    "Erdnussbutter": {
+      "area": "Trockenware & Konserven",
+      "kcal": 600,
+      "p": 25,
+      "c": 14,
+      "f": 49,
+      "pantry": true
+    },
+    "Honig": {
+      "area": "Trockenware & Konserven",
+      "kcal": 304,
+      "p": 0.3,
+      "c": 80,
+      "f": 0,
+      "pantry": true
+    },
+    "Olivenöl": {
+      "area": "Trockenware & Konserven",
+      "kcal": 884,
+      "p": 0,
+      "c": 0,
+      "f": 100,
+      "pantry": true
+    },
+    "Skyr": {
+      "area": "Kühlregal",
+      "kcal": 63,
+      "p": 11,
+      "c": 4,
+      "f": 0.2
+    },
+    "Magerquark": {
+      "area": "Kühlregal",
+      "kcal": 67,
+      "p": 12,
+      "c": 4,
+      "f": 0.3
+    },
+    "Milch 1,5 %": {
+      "area": "Kühlregal",
+      "kcal": 47,
+      "p": 3.4,
+      "c": 4.8,
+      "f": 1.5
+    },
+    "Hüttenkäse": {
+      "area": "Kühlregal",
+      "kcal": 98,
+      "p": 12,
+      "c": 2.6,
+      "f": 4.3
+    },
+    "Feta": {
+      "area": "Kühlregal",
+      "kcal": 260,
+      "p": 17,
+      "c": 0.7,
+      "f": 21
+    },
+    "Eier": {
+      "area": "Kühlregal",
+      "kcal": 137,
+      "p": 12,
+      "c": 0.6,
+      "f": 9.5,
+      "piece": 60
+    },
+    "Hähnchenbrust": {
+      "area": "Fleisch & Fisch",
+      "kcal": 106,
+      "p": 23,
+      "c": 0,
+      "f": 1.2
+    },
+    "Putenbrust": {
+      "area": "Fleisch & Fisch",
+      "kcal": 105,
+      "p": 24,
+      "c": 0,
+      "f": 1
+    },
+    "Rinderhack (mager)": {
+      "area": "Fleisch & Fisch",
+      "kcal": 150,
+      "p": 20,
+      "c": 0,
+      "f": 8
+    },
+    "Rinderhüftsteak": {
+      "area": "Fleisch & Fisch",
+      "kcal": 115,
+      "p": 22,
+      "c": 0,
+      "f": 3
+    },
+    "Lachsfilet": {
+      "area": "Tiefkühl",
+      "kcal": 200,
+      "p": 20,
+      "c": 0,
+      "f": 13
+    },
+    "Beeren (TK)": {
+      "area": "Tiefkühl",
+      "kcal": 45,
+      "p": 1,
+      "c": 8,
+      "f": 0.4
+    },
+    "Mango (TK)": {
+      "area": "Tiefkühl",
+      "kcal": 60,
+      "p": 0.8,
+      "c": 15,
+      "f": 0.4
+    },
+    "Kartoffeln": {
+      "area": "Obst & Gemüse",
+      "kcal": 72,
+      "p": 2,
+      "c": 15,
+      "f": 0.1
+    },
+    "Süßkartoffeln": {
+      "area": "Obst & Gemüse",
+      "kcal": 86,
+      "p": 1.6,
+      "c": 20,
+      "f": 0.1
+    },
+    "Tomaten": {
+      "area": "Obst & Gemüse",
+      "kcal": 18,
+      "p": 0.9,
+      "c": 2.9,
+      "f": 0.2
+    },
+    "Gurke": {
+      "area": "Obst & Gemüse",
+      "kcal": 15,
+      "p": 0.6,
+      "c": 2.2,
+      "f": 0.2
+    },
+    "Zwiebeln": {
+      "area": "Obst & Gemüse",
+      "kcal": 40,
+      "p": 1.2,
+      "c": 7.6,
+      "f": 0.2
+    },
+    "Bananen": {
+      "area": "Obst & Gemüse",
+      "kcal": 93,
+      "p": 1.1,
+      "c": 20,
+      "f": 0.2,
+      "piece": 120
+    },
+    "Äpfel": {
+      "area": "Obst & Gemüse",
+      "kcal": 54,
+      "p": 0.3,
+      "c": 11.4,
+      "f": 0.2,
+      "piece": 150
+    },
+    "Orangen": {
+      "area": "Obst & Gemüse",
+      "kcal": 47,
+      "p": 1,
+      "c": 9,
+      "f": 0.2,
+      "piece": 150
+    },
+    "Ananas": {
+      "area": "Obst & Gemüse",
+      "kcal": 55,
+      "p": 0.5,
+      "c": 12,
+      "f": 0.2
+    },
+    "Kokosmilch (light)": {
+      "area": "Trockenware & Konserven",
+      "kcal": 75,
+      "p": 0.7,
+      "c": 1.5,
+      "f": 7.5,
+      "pantry": true
+    },
+    "Putenhack": {
+      "area": "Fleisch & Fisch",
+      "kcal": 110,
+      "p": 20,
+      "c": 0,
+      "f": 3.5
+    }
+  },
+  "slots": [
+    {
+      "name": "Frühstück",
+      "cat": "fruehstueck"
+    },
+    {
+      "name": "Mittag",
+      "cat": "haupt"
+    },
+    {
+      "name": "Snack",
+      "cat": "snack"
+    },
+    {
+      "name": "Abendessen",
+      "cat": "haupt"
+    }
+  ],
+  "weeks": [
+    {
+      "1": [
+        "f1",
+        "h1",
+        "s1",
+        "h2"
+      ],
+      "2": [
+        "f2",
+        "h2",
+        "s2",
+        "h3"
+      ],
+      "3": [
+        "f3",
+        "h3",
+        "s3",
+        "h4"
+      ],
+      "4": [
+        "f4",
+        "h5",
+        "s4",
+        "h6"
+      ],
+      "5": [
+        "f1",
+        "h6",
+        "s1",
+        "h7"
+      ],
+      "6": [
+        "f2",
+        "h7",
+        "s2",
+        "h8"
+      ],
+      "0": [
+        "f3",
+        "h8",
+        "s3",
+        "h9"
+      ]
+    },
+    {
+      "1": [
+        "f5",
+        "h10",
+        "s5",
+        "h11"
+      ],
+      "2": [
+        "f6",
+        "h11",
+        "s6",
+        "h12"
+      ],
+      "3": [
+        "f2",
+        "h12",
+        "s2",
+        "h13"
+      ],
+      "4": [
+        "f5",
+        "h13",
+        "s5",
+        "h14"
+      ],
+      "5": [
+        "f1",
+        "h14",
+        "s6",
+        "h7"
+      ],
+      "6": [
+        "f6",
+        "h7",
+        "s5",
+        "h3"
+      ],
+      "0": [
+        "f3",
+        "h3",
+        "s6",
+        "h9"
+      ]
+    }
+  ],
+  "recipes": {
+    "f1": {
+      "name": "Overnight Oats mit Beeren",
+      "cat": "fruehstueck",
+      "min": 5,
+      "items": [
+        [
+          "Haferflocken",
+          80
+        ],
+        [
+          "Skyr",
+          200
+        ],
+        [
+          "Milch 1,5 %",
+          150
+        ],
+        [
+          "Beeren (TK)",
+          150
+        ],
+        [
+          "Honig",
+          10
+        ]
+      ],
+      "steps": [
+        "Haferflocken, Skyr und Milch in einer Dose verrühren.",
+        "Beeren (gefroren geht) darauf, Honig drüber.",
+        "Über Nacht in den Kühlschrank. Hält 2 Tage – gleich doppelt machen."
+      ],
+      "img": "🥣🫐"
+    },
+    "f2": {
+      "name": "Rührei mit Tomate & Zwiebel, dazu Apfel",
+      "cat": "fruehstueck",
+      "min": 10,
+      "items": [
+        [
+          "Eier",
+          240
+        ],
+        [
+          "Tomaten",
+          150
+        ],
+        [
+          "Zwiebeln",
+          50
+        ],
+        [
+          "Olivenöl",
+          5
+        ],
+        [
+          "Äpfel",
+          150
+        ]
+      ],
+      "steps": [
+        "Zwiebel würfeln, im Öl 2 Min. anbraten.",
+        "Eier verquirlen, salzen, in die Pfanne geben und bei mittlerer Hitze stocken lassen.",
+        "Tomaten würfeln und unterheben. Apfel dazu essen."
+      ],
+      "img": "🍳🍅🍎"
+    },
+    "f3": {
+      "name": "Quark-Bowl mit Banane & Erdnussbutter",
+      "cat": "fruehstueck",
+      "min": 5,
+      "items": [
+        [
+          "Magerquark",
+          300
+        ],
+        [
+          "Bananen",
+          120
+        ],
+        [
+          "Haferflocken",
+          40
+        ],
+        [
+          "Erdnussbutter",
+          15
+        ]
+      ],
+      "steps": [
+        "Quark mit einem Schuss Wasser cremig rühren.",
+        "Banane in Scheiben, Haferflocken drüber.",
+        "Erdnussbutter darauf."
+      ],
+      "img": "🥣🍌🥜"
+    },
+    "f4": {
+      "name": "Apfel-Zimt-Porridge mit Quark",
+      "cat": "fruehstueck",
+      "min": 10,
+      "items": [
+        [
+          "Haferflocken",
+          80
+        ],
+        [
+          "Milch 1,5 %",
+          250
+        ],
+        [
+          "Äpfel",
+          150
+        ],
+        [
+          "Magerquark",
+          150
+        ]
+      ],
+      "steps": [
+        "Haferflocken in der Milch 3 Min. köcheln.",
+        "Apfel klein schneiden und mit Zimt unterrühren.",
+        "Vom Herd nehmen, Quark einrühren."
+      ],
+      "img": "🥣🍎"
+    },
+    "h1": {
+      "name": "Hähnchen-Reis-Pfanne mit Tomate",
+      "cat": "haupt",
+      "min": 25,
+      "items": [
+        [
+          "Hähnchenbrust",
+          200
+        ],
+        [
+          "Reis",
+          90
+        ],
+        [
+          "Tomaten",
+          150
+        ],
+        [
+          "Zwiebeln",
+          60
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Reis nach Packung kochen.",
+        "Hähnchen würfeln, mit Zwiebel im Öl 6–8 Min. braten, mit Salz und Paprika würzen.",
+        "Tomaten würfeln, 2 Min. mitbraten, Reis unterheben.",
+        "Gut für 2–3 Portionen auf Vorrat."
+      ],
+      "img": "🍗🍚🍅"
+    },
+    "h2": {
+      "name": "Hack-Tomaten-Pfanne mit Reis",
+      "cat": "haupt",
+      "min": 25,
+      "items": [
+        [
+          "Rinderhack (mager)",
+          200
+        ],
+        [
+          "Passierte Tomaten",
+          200
+        ],
+        [
+          "Zwiebeln",
+          80
+        ],
+        [
+          "Reis",
+          80
+        ],
+        [
+          "Olivenöl",
+          5
+        ]
+      ],
+      "steps": [
+        "Reis kochen.",
+        "Zwiebel würfeln, mit dem Hack im Öl krümelig braten.",
+        "Passierte Tomaten dazu, mit Salz, Paprika, Chili, Kreuzkümmel 10 Min. köcheln.",
+        "Mit Reis servieren. Lässt sich gut einfrieren."
+      ],
+      "img": "🥩🍅🍚"
+    },
+    "h3": {
+      "name": "Ofenkartoffeln mit Hähnchen & Gurken-Quark",
+      "cat": "haupt",
+      "min": 30,
+      "items": [
+        [
+          "Kartoffeln",
+          400
+        ],
+        [
+          "Hähnchenbrust",
+          180
+        ],
+        [
+          "Magerquark",
+          150
+        ],
+        [
+          "Gurke",
+          100
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Ofen auf 220 °C. Kartoffeln in Spalten schneiden, mit Öl und Salz 25 Min. backen.",
+        "Hähnchen in Streifen nach 10 Min. mit aufs Blech legen.",
+        "Gurke reiben, mit Quark, Salz und Knoblauch verrühren."
+      ],
+      "img": "🥔🍗🥒"
+    },
+    "h4": {
+      "name": "Lachs mit Kartoffeln & Gurkensalat",
+      "cat": "haupt",
+      "min": 25,
+      "items": [
+        [
+          "Lachsfilet",
+          150
+        ],
+        [
+          "Kartoffeln",
+          350
+        ],
+        [
+          "Gurke",
+          150
+        ],
+        [
+          "Zwiebeln",
+          30
+        ],
+        [
+          "Olivenöl",
+          5
+        ]
+      ],
+      "steps": [
+        "Kartoffeln 20 Min. kochen.",
+        "Lachs (aufgetaut) salzen, im Öl je Seite 3–4 Min. braten.",
+        "Gurke und Zwiebel fein schneiden, mit Essig, Salz und Pfeffer anmachen."
+      ],
+      "img": "🐟🥔🥒"
+    },
+    "h5": {
+      "name": "Putengeschnetzeltes in Tomatensoße mit Reis",
+      "cat": "haupt",
+      "min": 25,
+      "items": [
+        [
+          "Putenbrust",
+          200
+        ],
+        [
+          "Passierte Tomaten",
+          150
+        ],
+        [
+          "Zwiebeln",
+          60
+        ],
+        [
+          "Reis",
+          80
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Reis kochen.",
+        "Pute in Streifen, mit Zwiebel im Öl 5 Min. braten.",
+        "Passierte Tomaten dazu, mit Salz, Pfeffer, Oregano 5 Min. köcheln."
+      ],
+      "img": "🍗🍅🍚"
+    },
+    "h6": {
+      "name": "Kartoffel-Hack-Pfanne",
+      "cat": "haupt",
+      "min": 25,
+      "items": [
+        [
+          "Rinderhack (mager)",
+          180
+        ],
+        [
+          "Kartoffeln",
+          350
+        ],
+        [
+          "Zwiebeln",
+          80
+        ],
+        [
+          "Tomaten",
+          150
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Kartoffeln würfeln, 8 Min. vorkochen.",
+        "Hack mit Zwiebel im Öl krümelig braten.",
+        "Kartoffeln dazu und 8 Min. mitbraten, bis sie leicht braun sind.",
+        "Tomaten würfeln, unterheben, mit Paprika würzen."
+      ],
+      "img": "🥔🥩🧅"
+    },
+    "h7": {
+      "name": "Griechische Hähnchen-Bowl",
+      "cat": "haupt",
+      "min": 20,
+      "items": [
+        [
+          "Hähnchenbrust",
+          180
+        ],
+        [
+          "Reis",
+          80
+        ],
+        [
+          "Gurke",
+          150
+        ],
+        [
+          "Tomaten",
+          150
+        ],
+        [
+          "Feta",
+          40
+        ],
+        [
+          "Zwiebeln",
+          30
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Reis kochen.",
+        "Hähnchen mit Oregano, Salz und der Hälfte des Öls 8 Min. braten.",
+        "Gurke, Tomate, Zwiebel würfeln, mit restlichem Öl anmachen.",
+        "Alles in eine Schüssel, Feta darüber bröseln."
+      ],
+      "img": "🍗🥗🧀"
+    },
+    "h8": {
+      "name": "Rindersteak mit Süßkartoffel-Spalten",
+      "cat": "haupt",
+      "min": 30,
+      "items": [
+        [
+          "Rinderhüftsteak",
+          200
+        ],
+        [
+          "Süßkartoffeln",
+          350
+        ],
+        [
+          "Zwiebeln",
+          50
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Ofen auf 220 °C. Süßkartoffel in Spalten, mit der Hälfte des Öls und Salz 25 Min. backen.",
+        "Steak trocken tupfen, salzen, je Seite 3–4 Min. scharf braten, kurz ruhen lassen, in Streifen schneiden.",
+        "Zwiebel in Ringen in derselben Pfanne weich braten."
+      ],
+      "img": "🍠🥩🧅"
+    },
+    "h9": {
+      "name": "Thunfisch-Reis-Salat",
+      "cat": "haupt",
+      "min": 15,
+      "items": [
+        [
+          "Thunfisch (Dose, Wasser)",
+          140
+        ],
+        [
+          "Reis",
+          80
+        ],
+        [
+          "Gurke",
+          150
+        ],
+        [
+          "Tomaten",
+          150
+        ],
+        [
+          "Zwiebeln",
+          30
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Reis kochen und abkühlen lassen (oder Reste nehmen).",
+        "Thunfisch abtropfen, Gemüse würfeln.",
+        "Alles mit Öl, Zitrone, Salz und Pfeffer mischen. Hält 2 Tage im Kühlschrank."
+      ],
+      "img": "🐟🍚🥒"
+    },
+    "s1": {
+      "name": "Skyr mit Mango",
+      "cat": "snack",
+      "min": 2,
+      "items": [
+        [
+          "Skyr",
+          250
+        ],
+        [
+          "Mango (TK)",
+          150
+        ]
+      ],
+      "steps": [
+        "Mango antauen lassen (oder morgens aus dem Gefrierfach nehmen) und mit Skyr mischen."
+      ],
+      "img": "🥛🥭"
+    },
+    "s2": {
+      "name": "Hüttenkäse mit Ananas",
+      "cat": "snack",
+      "min": 2,
+      "items": [
+        [
+          "Hüttenkäse",
+          200
+        ],
+        [
+          "Ananas",
+          150
+        ]
+      ],
+      "steps": [
+        "Ananas würfeln, über den Hüttenkäse geben."
+      ],
+      "img": "🧀🍍"
+    },
+    "s3": {
+      "name": "Apfel, Reiswaffeln & Erdnussbutter",
+      "cat": "snack",
+      "min": 2,
+      "items": [
+        [
+          "Äpfel",
+          150
+        ],
+        [
+          "Reiswaffeln",
+          20
+        ],
+        [
+          "Erdnussbutter",
+          15
+        ]
+      ],
+      "steps": [
+        "Erdnussbutter auf die Reiswaffeln, Apfel dazu."
+      ],
+      "img": "🍎🍘🥜"
+    },
+    "s4": {
+      "name": "Obstsalat mit Quark",
+      "cat": "snack",
+      "min": 5,
+      "items": [
+        [
+          "Magerquark",
+          200
+        ],
+        [
+          "Bananen",
+          100
+        ],
+        [
+          "Orangen",
+          150
+        ]
+      ],
+      "steps": [
+        "Obst klein schneiden, mit Quark mischen."
+      ],
+      "img": "🍊🍌🥛"
+    },
+    "f5": {
+      "name": "Skyr-Bowl mit Mango & Haferflocken",
+      "cat": "fruehstueck",
+      "min": 5,
+      "img": "🥛🥭🥣",
+      "items": [
+        [
+          "Skyr",
+          300
+        ],
+        [
+          "Mango (TK)",
+          150
+        ],
+        [
+          "Haferflocken",
+          50
+        ],
+        [
+          "Honig",
+          10
+        ]
+      ],
+      "steps": [
+        "Mango abends aus dem Gefrierfach in den Kühlschrank legen.",
+        "Skyr in eine Schüssel, Mango und Haferflocken darauf, Honig drüber."
+      ]
+    },
+    "f6": {
+      "name": "Omelett mit Tomate & Feta, dazu Banane",
+      "cat": "fruehstueck",
+      "min": 10,
+      "img": "🍳🧀🍌",
+      "items": [
+        [
+          "Eier",
+          240
+        ],
+        [
+          "Tomaten",
+          100
+        ],
+        [
+          "Feta",
+          30
+        ],
+        [
+          "Olivenöl",
+          5
+        ],
+        [
+          "Bananen",
+          120
+        ]
+      ],
+      "steps": [
+        "Eier verquirlen, salzen, in die Pfanne mit Öl geben.",
+        "Tomaten würfeln, Feta bröseln, beides auf das stockende Ei streuen.",
+        "Zusammenklappen, 1 Min. ziehen lassen. Banane dazu."
+      ]
+    },
+    "h10": {
+      "name": "Hähnchen-Curry mit Reis",
+      "cat": "haupt",
+      "min": 25,
+      "img": "🍛🍗",
+      "items": [
+        [
+          "Hähnchenbrust",
+          200
+        ],
+        [
+          "Passierte Tomaten",
+          150
+        ],
+        [
+          "Kokosmilch (light)",
+          100
+        ],
+        [
+          "Zwiebeln",
+          60
+        ],
+        [
+          "Reis",
+          80
+        ],
+        [
+          "Olivenöl",
+          5
+        ]
+      ],
+      "steps": [
+        "Reis kochen.",
+        "Zwiebel und Hähnchenwürfel im Öl 5 Min. anbraten, mit 2 TL Currypulver bestäuben.",
+        "Passierte Tomaten und Kokosmilch dazu, 8 Min. köcheln, salzen.",
+        "Gut für 2–3 Portionen auf Vorrat."
+      ]
+    },
+    "h11": {
+      "name": "Burger-Teller mit Ofen-Wedges (ohne Brötchen)",
+      "cat": "haupt",
+      "min": 30,
+      "img": "🍔🥔🥒",
+      "items": [
+        [
+          "Rinderhack (mager)",
+          180
+        ],
+        [
+          "Kartoffeln",
+          350
+        ],
+        [
+          "Gurke",
+          100
+        ],
+        [
+          "Tomaten",
+          100
+        ],
+        [
+          "Zwiebeln",
+          40
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Ofen auf 220 °C. Kartoffeln in Spalten, mit Öl, Salz und Paprika 25 Min. backen.",
+        "Hack salzen, pfeffern, zu 2 Patties formen, je Seite 3–4 Min. braten.",
+        "Gurke, Tomate und Zwiebel in Scheiben dazu."
+      ]
+    },
+    "h12": {
+      "name": "Lachs-Reis-Bowl mit Gurke",
+      "cat": "haupt",
+      "min": 20,
+      "img": "🐟🍚🥒",
+      "items": [
+        [
+          "Lachsfilet",
+          150
+        ],
+        [
+          "Reis",
+          80
+        ],
+        [
+          "Gurke",
+          150
+        ],
+        [
+          "Zwiebeln",
+          20
+        ]
+      ],
+      "steps": [
+        "Reis kochen.",
+        "Lachs (aufgetaut) salzen, ohne Öl in einer beschichteten Pfanne je Seite 3–4 Min. braten, zerzupfen.",
+        "Gurke würfeln, Zwiebel fein schneiden, mit Zitrone und Salz anmachen. Alles in eine Schüssel."
+      ]
+    },
+    "h13": {
+      "name": "Puten-Frikadellen mit Kartoffelpüree",
+      "cat": "haupt",
+      "min": 30,
+      "img": "🧆🥔",
+      "items": [
+        [
+          "Putenhack",
+          200
+        ],
+        [
+          "Haferflocken",
+          20
+        ],
+        [
+          "Eier",
+          60
+        ],
+        [
+          "Zwiebeln",
+          40
+        ],
+        [
+          "Kartoffeln",
+          400
+        ],
+        [
+          "Milch 1,5 %",
+          80
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Kartoffeln schälen, 20 Min. kochen.",
+        "Hack mit Haferflocken (statt Paniermehl), Ei, fein gewürfelter Zwiebel, Salz und Senf mischen, 4 Frikadellen formen.",
+        "Im Öl je Seite 4–5 Min. braten.",
+        "Kartoffeln mit warmer Milch und Salz stampfen. Frikadellen halten 3 Tage im Kühlschrank."
+      ]
+    },
+    "h14": {
+      "name": "Paprika-Hähnchen mit Süßkartoffel-Pommes",
+      "cat": "haupt",
+      "min": 30,
+      "img": "🍗🍠",
+      "items": [
+        [
+          "Hähnchenbrust",
+          200
+        ],
+        [
+          "Süßkartoffeln",
+          350
+        ],
+        [
+          "Magerquark",
+          100
+        ],
+        [
+          "Olivenöl",
+          10
+        ]
+      ],
+      "steps": [
+        "Ofen auf 220 °C. Süßkartoffel in Stifte, mit der Hälfte des Öls und Salz 25 Min. backen.",
+        "Hähnchen mit Paprikapulver und Salz einreiben, im restlichen Öl 8 Min. braten.",
+        "Quark mit Salz, Pfeffer und Kräutern als Dip."
+      ]
+    },
+    "s5": {
+      "name": "Quark mit Beeren",
+      "cat": "snack",
+      "min": 2,
+      "img": "🥛🫐",
+      "items": [
+        [
+          "Magerquark",
+          250
+        ],
+        [
+          "Beeren (TK)",
+          150
+        ],
+        [
+          "Honig",
+          10
+        ]
+      ],
+      "steps": [
+        "Beeren kurz antauen lassen, mit Quark und Honig verrühren."
+      ]
+    },
+    "s6": {
+      "name": "2 Eier, Gurke & Apfel",
+      "cat": "snack",
+      "min": 10,
+      "img": "🥚🥒🍎",
+      "items": [
+        [
+          "Eier",
+          120
+        ],
+        [
+          "Gurke",
+          150
+        ],
+        [
+          "Äpfel",
+          150
+        ]
+      ],
+      "steps": [
+        "Eier 9 Min. hart kochen (gleich mehrere auf Vorrat).",
+        "Gurke in Sticks schneiden, salzen. Apfel dazu."
+      ]
+    }
+  },
+  "emergency": [
+    {
+      "name": "Grillhähnchen (½) + Gurke & Tomate",
+      "kcal": 750
+    },
+    {
+      "name": "500 g Skyr + 2 Bananen",
+      "kcal": 540
+    },
+    {
+      "name": "Döner-Teller mit Reis, wenig Soße",
+      "kcal": 950
+    }
+  ],
+  "quick": [
+    {
+      "label": "Snack",
+      "kcal": 200
+    },
+    {
+      "label": "Restaurant",
+      "kcal": 900
+    },
+    {
+      "label": "Fast Food",
+      "kcal": 1200
+    }
+  ],
+  "cravings": [
+    {
+      "name": "Gurke & Tomaten mit Salz",
+      "kcal": 50
+    },
+    {
+      "name": "Apfel",
+      "kcal": 80
+    },
+    {
+      "name": "200 g TK-Beeren",
+      "kcal": 90
+    },
+    {
+      "name": "250 g Skyr natur",
+      "kcal": 160
+    },
+    {
+      "name": "2 gekochte Eier",
+      "kcal": 165
+    }
+  ],
+  "alternatives": [
+    "Ein großes Glas Wasser trinken",
+    "10 Minuten gehen",
+    "15 Minuten warten – Heißhunger geht oft vorbei"
+  ]
+}
