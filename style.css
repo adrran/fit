@@ -82,3 +82,4 @@ details { margin:6px 0 2px; } summary { cursor:pointer; color:var(--acc); paddin
 textarea { font:inherit; width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--line); background:var(--bg); color:var(--text); }
 .ai { white-space:pre-wrap; margin:12px 0; padding:12px; border-radius:12px; background:var(--bg); border-left:4px solid var(--p); }
 .chips { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin:8px 0; } .chips .btn { min-height:56px; padding:6px 0; font-size:.78rem; line-height:1.2; } .chips small { display:block; font-weight:400; }
+input.bad { border-color:#f87171; }

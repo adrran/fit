@@ -26,6 +26,7 @@ const save = () => localStorage.setItem(KEY, JSON.stringify(S));
 // ---------- Helfer ----------
 const $ = s => document.querySelector(s);
 const r0 = Math.round;
+const toNum = v => parseFloat(String(v ?? '').trim().replace(',', '.')); // "129,5" und "129.5"
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const today = () => C.key(new Date());
 const day = k => (S.days[k] ??= { eaten: {}, extra: [] });
@@ -219,7 +220,7 @@ function foodDlg() {
     return dlg(`<h2>${esc(x.name)}</h2>
       <p class=muted>pro 100 ${u}: ${r0(x.kcal)} kcal · P ${x.p} g · KH ${x.c} g · F ${x.f} g<br>Quelle: ${x.src}</p>
       <form data-form=foodAdd class=stack>
-        <label>Wie viel? (${u})<input name=g type=number inputmode=decimal step=any min=1 value="${F.g}" data-grams required></label>
+        <label>Wie viel? (${u})<input name=g inputmode=decimal value="${F.g}" data-grams required></label>
         ${x.portion ? `<button type=button class="btn ghost" data-act=foodPortion>1 Portion = ${x.portion} ${u}</button>` : ''}
         <p id=foodPrev class=big>${prevTxt(per(x, F.g))}</p>
         <button class=btn>Eintragen</button></form>
@@ -234,10 +235,10 @@ function foodDlg() {
     <h3>Von der Packung abtippen (pro 100 g/ml)</h3>
     <form data-form=foodManual class="stack form">
       <label>Name<input name=name required placeholder="z. B. Proteinriegel XY"></label>
-      <div class=grid2><label>kcal<input name=kcal type=number step=any inputmode=decimal required></label>
-        <label>Protein g<input name=p type=number step=any inputmode=decimal required></label>
-        <label>Kohlenhydrate g<input name=c type=number step=any inputmode=decimal required></label>
-        <label>Fett g<input name=f type=number step=any inputmode=decimal required></label></div>
+      <div class=grid2><label>kcal<input name=kcal inputmode=decimal required></label>
+        <label>Protein g<input name=p inputmode=decimal required></label>
+        <label>Kohlenhydrate g<input name=c inputmode=decimal required></label>
+        <label>Fett g<input name=f inputmode=decimal required></label></div>
       <button class="btn ghost">Weiter</button></form>`);
 }
 const pickFood = x => { FOOD.sel = x; FOOD.g = x.portion || 100; foodDlg(); };
@@ -279,7 +280,7 @@ function bodyWeight() {
   const fc = C.forecast(S.weights, k, p.goalKg, (t.tdee - t.kcal) * 7 / 7700);
   const mon = C.monday(k), waist = Object.entries(S.waist).sort().reverse().slice(0, 4);
   return `<section class=card><h2>Gewicht heute</h2>
-    <form class=row data-form=weight><input name=v type=number step=0.1 inputmode=decimal placeholder=kg value="${S.weights[k] ?? ''}"><button class=btn>Speichern</button></form></section>
+    <form class=row data-form=weight><input name=v inputmode=decimal placeholder=kg value="${S.weights[k] ?? ''}"><button class=btn>Speichern</button></form></section>
   <section class="card grid2">
     <div><div class=muted>7-Tage-Schnitt</div><div class=big>${kg(fc?.now)}</div></div>
     <div><div class=muted>Noch</div><div class=big>${fc ? kg(fc.left) : '–'}</div></div>
@@ -292,7 +293,7 @@ function bodyWeight() {
   ${weekCard('Letzte Woche', weekStats(C.addDays(mon, -7)))}
   <section class=card><h2>Wo es hakt</h2>${deviations()}</section>
   <section class=card><h2>Bauchumfang (wöchentlich)</h2>
-    <form class=row data-form=waist><input name=v type=number step=0.5 inputmode=decimal placeholder=cm value="${S.waist[k] ?? ''}"><button class=btn>Speichern</button></form>
+    <form class=row data-form=waist><input name=v inputmode=decimal placeholder=cm value="${S.waist[k] ?? ''}"><button class=btn>Speichern</button></form>
     ${waist.map(([d, v]) => `<div class=row><span>${fmtDate(d)}</span><span>${v} cm</span></div>`).join('')}</section>`;
 }
 
@@ -509,23 +510,24 @@ function run() {
 }
 
 // ---------- Einstellungen ----------
-function einstellungen() {
-  const p = S.profile, t = T(), rm = S.reminders;
-  const num = (path, label, v, step = 1) => `<label>${label}<input type=number step=${step} data-set=${path} value="${v}"></label>`;
-  const sel = (path, label, v, opts) => `<label>${label}<select data-set=${path}>${opts.map(([val, txt]) => `<option value=${val} ${val == v ? 'selected' : ''}>${txt}</option>`).join('')}</select></label>`;
-  const rem = (id, label, time = true) => `<div class=row><label class=check><input type=checkbox data-set=reminders.${id}.on ${rm[id].on ? 'checked' : ''}> ${label}</label>
-    ${time ? `<input type=time class=w-auto data-set=reminders.${id}.time value="${rm[id].time}">` : '<span class=muted>zu den Essenszeiten</span>'}</div>`;
-  return `<header class=row><h1>Einstellungen</h1><a class="btn ghost sm" href=#start aria-label=Zurück>✕</a></header>
-  <section class=card><h2>Rechner</h2>
+const calcCard = t => `<h2>Rechner</h2>
     <div class=row><span>Grundumsatz (Mifflin-St-Jeor)</span><b>${t.bmr} kcal</b></div>
     <div class=row><span>Gesamtumsatz</span><b>${t.tdee} kcal</b></div>
     <div class=row><span>Tagesziel</span><b>${t.kcal} kcal</b></div>
     <div class=row><span>Protein / KH / Fett</span><b>${t.protein} / ${t.carbs} / ${t.fat} g</b></div>
-    <p class=muted>Gerechnet mit ${t.kg} kg (neu alle 5 kg)${S.plateau?.adjust ? `, Plateau-Anpassung ${S.plateau.adjust} kcal` : ''}. Nie unter Grundumsatz.</p></section>
+    <p class=muted>Gerechnet mit ${t.kg} kg (neu alle 5 kg)${S.plateau?.adjust ? `, Plateau-Anpassung ${S.plateau.adjust} kcal` : ''}. Nie unter Grundumsatz.</p>`;
+function einstellungen() {
+  const p = S.profile, t = T(), rm = S.reminders;
+  const num = (path, label, v) => `<label>${label}<input inputmode=decimal data-num data-set=${path} value="${String(v).replace('.', ',')}"></label>`;
+  const sel = (path, label, v, opts) => `<label>${label}<select data-set=${path}>${opts.map(([val, txt]) => `<option value=${val} ${val == v ? 'selected' : ''}>${txt}</option>`).join('')}</select></label>`;
+  const rem = (id, label, time = true) => `<div class=row><label class=check><input type=checkbox data-set=reminders.${id}.on ${rm[id].on ? 'checked' : ''}> ${label}</label>
+    ${time ? `<input type=time class=w-auto data-set=reminders.${id}.time value="${rm[id].time}">` : '<span class=muted>zu den Essenszeiten</span>'}</div>`;
+  return `<header class=row><h1>Einstellungen</h1><a class="btn ghost sm" href=#start aria-label=Zurück>✕</a></header>
+  <section class=card id=calc>${calcCard(t)}</section>
   <section class="card form"><h2>Profil</h2>
     ${sel('profile.sex', 'Geschlecht', p.sex, [['m', 'männlich'], ['w', 'weiblich']])}
     ${num('profile.age', 'Alter', p.age)}${num('profile.height', 'Größe (cm)', p.height)}
-    ${num('profile.startKg', 'Startgewicht (kg)', p.startKg, 0.1)}${num('profile.goalKg', 'Zielgewicht (kg)', p.goalKg, 0.1)}
+    ${num('profile.startKg', 'Startgewicht (kg)', p.startKg)}${num('profile.goalKg', 'Zielgewicht (kg)', p.goalKg)}
     ${sel('profile.activity', 'Aktivität', p.activity, [[1.2, 'kaum (1,2)'], [1.375, 'leicht (1,375)'], [1.55, 'mäßig (1,55)'], [1.725, 'hoch (1,725)']])}
     ${sel('profile.deficit', 'Defizit', p.deficit, [[500, '500 kcal'], [600, '600 kcal'], [700, '700 kcal']])}
     <label>Start (für Schrittziel)<input type=date data-set=profile.start value="${p.start}"></label></section>
@@ -611,9 +613,14 @@ const ACT = {
   ics,
 };
 const FORMS = {
-  weight: fd => { const v = +fd.get('v'); if (v > 30 && v < 400) S.weights[today()] = v; else delete S.weights[today()]; },
+  weight: fd => {
+    const raw = fd.get('v').trim(), v = toNum(raw);
+    if (!raw) delete S.weights[today()]; // Feld bewusst geleert
+    else if (v > 30 && v < 400) S.weights[today()] = v;
+    else alert('Gewicht bitte in kg, z. B. 129,5');
+  },
   steps: fd => { day(today()).steps = +fd.get('v') || undefined; },
-  waist: fd => { const v = +fd.get('v'); if (v) S.waist[today()] = v; },
+  waist: fd => { const v = toNum(fd.get('v')); if (v > 0) S.waist[today()] = v; },
   note: fd => { (S.feel[today()] ??= {}).note = fd.get('note').trim() || undefined; },
   foodSearch: async fd => {
     const q = fd.get('q').trim();
@@ -631,9 +638,9 @@ const FORMS = {
     }
     FOOD.busy = false; foodDlg();
   },
-  foodManual: fd => pickFood({ name: fd.get('name').trim(), kcal: +fd.get('kcal'), p: +fd.get('p'), c: +fd.get('c'), f: +fd.get('f'), src: 'Packung' }),
+  foodManual: fd => pickFood({ name: fd.get('name').trim(), kcal: toNum(fd.get('kcal')), p: toNum(fd.get('p')) || 0, c: toNum(fd.get('c')) || 0, f: toNum(fd.get('f')) || 0, src: 'Packung' }),
   foodAdd: fd => {
-    const g = +fd.get('g'), x = FOOD.sel;
+    const g = toNum(fd.get('g')), x = FOOD.sel;
     if (!(g > 0)) return;
     const n = per(x, g), u = x.unit || (x.src === 'Open Food Facts' ? 'g/ml' : 'g');
     S.foods[x.name] = { name: x.name, kcal: x.kcal, p: x.p, c: x.c, f: x.f, portion: x.portion ?? null, unit: x.unit, used: Date.now() };
@@ -660,7 +667,7 @@ document.addEventListener('submit', e => {
 });
 document.addEventListener('input', e => {
   if (!('grams' in e.target.dataset) || !FOOD?.sel) return;
-  FOOD.g = +e.target.value || 0;
+  FOOD.g = toNum(e.target.value) || 0;
   $('#foodPrev').textContent = prevTxt(per(FOOD.sel, FOOD.g));
 });
 document.addEventListener('change', async e => {
@@ -669,7 +676,10 @@ document.addEventListener('change', async e => {
     const wd = +el.dataset.td, td = S.profile.trainDays;
     S.profile.trainDays = el.checked ? [...td, wd] : td.filter(x => x !== wd);
   } else if (el.dataset.set) {
-    const v = el.type === 'checkbox' ? el.checked : el.type === 'number' || (el.tagName === 'SELECT' && !isNaN(el.value)) ? +el.value : el.value;
+    const v = el.type === 'checkbox' ? el.checked : 'num' in el.dataset ? toNum(el.value)
+      : el.type === 'number' || (el.tagName === 'SELECT' && !isNaN(el.value)) ? +el.value : el.value;
+    if (Number.isNaN(v) || v === 0) return void el.classList.add('bad'); // ungültig → nicht speichern
+    el.classList.remove('bad');
     const path = el.dataset.set.split('.'), last = path.pop();
     path.reduce((o, k) => o[k], S)[last] = v;
   } else if ('aikey' in el.dataset) {
@@ -683,7 +693,10 @@ document.addEventListener('change', async e => {
       S = init(d);
     } catch { alert('Keine gültige Backup-Datei.'); return; }
   } else return;
-  save(); render();
+  save();
+  // Auf der Einstellungsseite nicht alles neu aufbauen – sonst verschwindet das Feld, in dem gerade getippt wird
+  if ($('#calc') && !('import' in el.dataset)) $('#calc').innerHTML = calcCard(T());
+  else render();
 });
 
 // ---------- Router ----------
