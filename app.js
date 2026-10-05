@@ -1,6 +1,6 @@
 import * as C from './calc.js';
 
-const [R, E, TIPS] = await Promise.all(['data/recipes.json', 'data/exercises.json', 'data/tips.json'].map(f => fetch(f).then(r => r.json())));
+const [R, E, TIPS, FOODS] = await Promise.all(['data/recipes.json', 'data/exercises.json', 'data/tips.json', 'data/foods.json'].map(f => fetch(f).then(r => r.json())));
 const NUT = Object.fromEntries(Object.entries(R.recipes).map(([id, r]) => [id, C.nutrition(r, R.ingredients)]));
 
 // ---------- Speicher ----------
@@ -9,7 +9,7 @@ const DEFAULT = {
   profile: { sex: 'm', age: 27, height: 192, startKg: 130, goalKg: 90, activity: 1.55, deficit: 700,
     trainDays: [1, 2, 4, 5, 6], mealTimes: ['08:00', '13:00', '16:30', '19:30'], start: null },
   reminders: { wiegen: { on: true, time: '07:30' }, essen: { on: true }, training: { on: true, time: '17:00' }, checkin: { on: true, time: '21:00' } },
-  weights: {}, waist: {}, days: {}, workouts: {}, progress: {}, plan: {}, shop: {}, feel: {}, plateau: null,
+  weights: {}, waist: {}, days: {}, workouts: {}, progress: {}, plan: {}, shop: {}, feel: {}, foods: {}, plateau: null,
 };
 function init(d) {
   const s = { ...structuredClone(DEFAULT), ...d };
@@ -36,7 +36,7 @@ const kg = v => v == null ? '–' : v.toFixed(1).replace('.', ',') + ' kg';
 const cap = s => s[0].toUpperCase() + s.slice(1);
 const lvl = ex => S.progress[ex]?.level ?? 0;
 const exName = ex => E.exercises[ex].levels[lvl(ex)].name;
-const dlg = html => { $('#dlgBody').innerHTML = html; $('#dlg').showModal(); };
+const dlg = html => { $('#dlgBody').innerHTML = html; if (!$('#dlg').open) $('#dlg').showModal(); };
 const tabs = (act, cur, list) => `<div class=tabs>${list.map(([id, label]) =>
   `<button class="btn ${cur === id ? '' : 'ghost'}" data-act=${act} data-t=${id}>${label}</button>`).join('')}</div>`;
 const download = (name, text, type) => {
@@ -69,8 +69,9 @@ function meals(k) {
 // ponytail: grobe Fast-Food-Verteilung 15 % P / 45 % KH / 40 % F, genauer geht's ohne Einzelzählung nicht
 const est = kcal => ({ p: kcal * 0.15 / 4, c: kcal * 0.45 / 4, fat: kcal * 0.4 / 9 });
 function consumed(m) {
-  const n = { kcal: m.used, p: 0, c: 0, fat: 0 };
+  const n = { kcal: m.used, p: 0, c: 0, fat: 0, guessed: false };
   for (const e of [...Object.values(m.d.eaten), ...m.d.extra]) {
+    if (e.p == null) n.guessed = true;
     const x = e.p != null ? e : est(e.kcal);
     n.p += x.p; n.c += x.c; n.fat += x.fat;
   }
@@ -115,7 +116,8 @@ function start() {
   <div class=ringbox>${rings(rows)}<div class=center><div class=num>${r0(n.kcal)}</div><div class=muted>von ${t.kcal} kcal</div></div></div>
   <p class=left>${m.left >= 0 ? `Noch <b>${r0(m.left)} kcal</b> übrig` : `<b>${r0(-m.left)} kcal</b> über dem Ziel – morgen ganz normal weiter`}</p>
   <div class=legend>${rows.map(([v, of, cls, label, unit]) =>
-    `<div><i class=${cls}></i>${label}<b>${r0(v)} / ${of} ${unit}</b></div>`).join('')}</div>`;
+    `<div><i class=${cls}></i>${label}<b>${r0(v)} / ${of} ${unit}</b></div>`).join('')}</div>
+  ${n.guessed ? '<p class="muted left">≈ Makros teilweise geschätzt (grobe Angaben). Für genaue Werte „Genau eintragen“ nutzen.</p>' : ''}`;
 }
 
 // ---------- Ernährung: 7 Tage voraus ----------
@@ -175,11 +177,70 @@ function swapMeal(k, i) {
 function otherDlg(slot) {
   const b = (label, kcal, plan = 0) => `<button class="btn ghost" data-act=pick data-slot="${slot}" data-kcal=${kcal} data-label="${label}" data-plan=${plan}>${label} · ~${kcal} kcal</button>`;
   dlg(`<h2>${slot === '' ? 'Was kam dazu?' : 'Was gab es stattdessen?'}</h2>
+    <button class=btn data-act=food data-slot="${slot}">🔍 Genau eintragen (mit Nährwerten)</button>
+    <h3>Grob schätzen</h3>
     <div class=stack>${R.quick.map(q => b(q.label, q.kcal)).join('')}</div>
     ${slot === '' ? '' : `<h3>Notfall-Optionen (zählen als Plan)</h3><div class=stack>${R.emergency.map(q => b(q.name, q.kcal, 1)).join('')}</div>`}
     <h3>Eigene Schätzung</h3>
     <form class=row data-form=pickNum><input type=hidden name=slot value="${slot}"><input name=kcal type=number inputmode=numeric placeholder=kcal required><button class=btn>OK</button></form>`);
 }
+
+// ---------- Genau eintragen: Lebensmittel-Suche ----------
+// Quellen: eigene Einträge (offline) → Tabelle data/foods.json + Rezept-Zutaten (offline) → Open Food Facts (online)
+let FOOD = null; // { slot, q, results, sel, g, busy, err }
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+const per = (x, g) => ({ kcal: x.kcal * g / 100, p: x.p * g / 100, c: x.c * g / 100, fat: x.f * g / 100 });
+const prevTxt = n => `${r0(n.kcal)} kcal · P ${r0(n.p)} g · KH ${r0(n.c)} g · F ${r0(n.fat)} g`;
+const myFoods = () => Object.values(S.foods).sort((a, b) => b.used - a.used).map(f => ({ ...f, src: 'Meine' }));
+const localFoods = () => [...myFoods(), ...FOODS.map(f => ({ ...f, src: 'Tabelle (Durchschnitt)' })),
+  ...Object.entries(R.ingredients).map(([name, i]) => ({ name, kcal: i.kcal, p: i.p, c: i.c, f: i.f, portion: i.piece, src: 'Tabelle (Durchschnitt)' }))];
+
+async function offSearch(q) {
+  const u = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(q)}&search_simple=1&json=1&page_size=15`
+    + '&sort_by=unique_scans_n&tagtype_0=countries&tag_contains_0=contains&tag_0=germany&fields=product_name,brands,serving_quantity,nutriments';
+  let j;
+  for (let i = 0; !j; i++) { // die API hakt gelegentlich → 1× wiederholen
+    try { j = await (await fetch(u, { signal: AbortSignal.timeout(8000) })).json(); } catch (e) { if (i) throw e; }
+  }
+  const one = v => Math.round(+v * 10) / 10;
+  return j.products.map(p => {
+    const n = p.nutriments ?? {}, kcal = n['energy-kcal_100g'] ?? (n.energy_100g != null ? n.energy_100g / 4.184 : null);
+    if (kcal == null || !p.product_name) return null;
+    return { name: p.product_name + (p.brands ? ` (${p.brands.split(',')[0].trim()})` : ''), kcal: one(kcal),
+      p: one(n.proteins_100g ?? 0), c: one(n.carbohydrates_100g ?? 0), f: one(n.fat_100g ?? 0),
+      portion: +p.serving_quantity > 0 ? r0(+p.serving_quantity) : null, src: 'Open Food Facts' };
+  }).filter(Boolean);
+}
+
+function foodDlg() {
+  const F = FOOD;
+  if (F.sel) {
+    const x = F.sel, u = x.unit || (x.src === 'Open Food Facts' ? 'g/ml' : 'g'); // OFF sagt nicht, ob fest oder flüssig
+    return dlg(`<h2>${esc(x.name)}</h2>
+      <p class=muted>pro 100 ${u}: ${r0(x.kcal)} kcal · P ${x.p} g · KH ${x.c} g · F ${x.f} g<br>Quelle: ${x.src}</p>
+      <form data-form=foodAdd class=stack>
+        <label>Wie viel? (${u})<input name=g type=number inputmode=decimal step=any min=1 value="${F.g}" data-grams required></label>
+        ${x.portion ? `<button type=button class="btn ghost" data-act=foodPortion>1 Portion = ${x.portion} ${u}</button>` : ''}
+        <p id=foodPrev class=big>${prevTxt(per(x, F.g))}</p>
+        <button class=btn>Eintragen</button></form>
+      <button class="btn ghost" data-act=foodBack>← zurück zur Suche</button>`);
+  }
+  dlg(`<h2>Genau eintragen</h2>
+    <form data-form=foodSearch class=row><input name=q type=search value="${esc(F.q)}" placeholder="z. B. Cola, Snickers, Döner" enterkeyhint=search><button class=btn>Suchen</button></form>
+    ${F.busy ? '<p class=muted>Suche auch online …</p>' : ''}${F.err ? `<p class=hint>${F.err}</p>` : ''}
+    ${!F.q && F.results.length ? '<h3>Zuletzt</h3>' : ''}
+    <div>${F.results.map((x, i) => `<button class=item data-act=foodPick data-i=${i}><span>${esc(x.name)}<br><small class=muted>${x.src}</small></span>
+      <span class=muted>${r0(x.kcal)} kcal/100</span></button>`).join('')}</div>
+    <h3>Von der Packung abtippen (pro 100 g/ml)</h3>
+    <form data-form=foodManual class="stack form">
+      <label>Name<input name=name required placeholder="z. B. Proteinriegel XY"></label>
+      <div class=grid2><label>kcal<input name=kcal type=number step=any inputmode=decimal required></label>
+        <label>Protein g<input name=p type=number step=any inputmode=decimal required></label>
+        <label>Kohlenhydrate g<input name=c type=number step=any inputmode=decimal required></label>
+        <label>Fett g<input name=f type=number step=any inputmode=decimal required></label></div>
+      <button class="btn ghost">Weiter</button></form>`);
+}
+const pickFood = x => { FOOD.sel = x; FOOD.g = x.portion || 100; foodDlg(); };
 
 // ---------- Einkaufsliste: pro Tag ----------
 let shopDay = 0; // 0 = heute … 6
@@ -501,9 +562,16 @@ function ics() {
 }
 
 // ---------- Aktionen ----------
-const addEat = (slot, kcal, label, plan) => {
-  const d = day(today());
-  if (slot === '') d.extra.push({ kcal, label }); else d.eaten[slot] = { kcal, label, plan };
+const addEat = (slot, kcal, label, plan, mac = {}) => {
+  const d = day(today()), e = { kcal, label, ...mac };
+  const o = d.eaten[slot], m = x => x.p != null ? x : { ...x, ...est(x.kcal) };
+  if (slot === '') d.extra.push(e);
+  else if (o && !o.plan && !plan) { // mehrere Sachen statt einer Mahlzeit → aufsummieren
+    const a = m(o), b = m(e), guessed = o.p == null || e.p == null;
+    d.eaten[slot] = { kcal: a.kcal + b.kcal, label: `${o.label} + ${label}`, plan: false,
+      ...(guessed ? {} : { p: a.p + b.p, c: a.c + b.c, fat: a.fat + b.fat }) };
+  } else d.eaten[slot] = { ...e, plan };
+  FOOD = null;
   $('#dlg').close();
 };
 const ACT = {
@@ -514,6 +582,10 @@ const ACT = {
     d.eaten[i] = { kcal: r0(x.kcal), f: x.f, plan: true, p: n.p * x.f, c: n.c * x.f, fat: n.f * x.f };
   },
   other: ({ slot }) => otherDlg(slot),
+  food: ({ slot }) => { FOOD = { slot, q: '', results: myFoods().slice(0, 8), sel: null, g: 100, busy: false, err: '' }; foodDlg(); },
+  foodPick: ({ i }) => pickFood(FOOD.results[+i]),
+  foodPortion: () => { FOOD.g = FOOD.sel.portion; foodDlg(); },
+  foodBack: () => { FOOD.sel = null; foodDlg(); },
   pick: ({ slot, kcal, label, plan }) => addEat(slot, +kcal, label, plan === '1'),
   delExtra: ({ j }) => day(today()).extra.splice(j, 1),
   swap: ({ k, i }) => swapMeal(k, +i),
@@ -543,6 +615,30 @@ const FORMS = {
   steps: fd => { day(today()).steps = +fd.get('v') || undefined; },
   waist: fd => { const v = +fd.get('v'); if (v) S.waist[today()] = v; },
   note: fd => { (S.feel[today()] ??= {}).note = fd.get('note').trim() || undefined; },
+  foodSearch: async fd => {
+    const q = fd.get('q').trim();
+    if (!q) return;
+    const words = norm(q).split(/\s+/), local = localFoods().filter(x => words.every(w => norm(x.name).includes(w)));
+    Object.assign(FOOD, { q, results: local, busy: true, err: '' }); foodDlg();
+    try {
+      const online = await offSearch(q);
+      if (FOOD?.q !== q) return; // Dialog inzwischen zu oder neue Suche
+      FOOD.results = [...local, ...online];
+      if (!FOOD.results.length) FOOD.err = 'Nichts gefunden. Anders schreiben (z. B. Marke weglassen) oder unten von der Packung abtippen.';
+    } catch {
+      if (FOOD?.q !== q) return;
+      FOOD.err = navigator.onLine ? 'Online-Datenbank gerade nicht erreichbar – nochmal suchen oder von der Packung abtippen.' : 'Offline – nur gespeicherte Treffer.';
+    }
+    FOOD.busy = false; foodDlg();
+  },
+  foodManual: fd => pickFood({ name: fd.get('name').trim(), kcal: +fd.get('kcal'), p: +fd.get('p'), c: +fd.get('c'), f: +fd.get('f'), src: 'Packung' }),
+  foodAdd: fd => {
+    const g = +fd.get('g'), x = FOOD.sel;
+    if (!(g > 0)) return;
+    const n = per(x, g), u = x.unit || (x.src === 'Open Food Facts' ? 'g/ml' : 'g');
+    S.foods[x.name] = { name: x.name, kcal: x.kcal, p: x.p, c: x.c, f: x.f, portion: x.portion ?? null, unit: x.unit, used: Date.now() };
+    addEat(FOOD.slot, r0(n.kcal), `${x.name} · ${g} ${u}`, false, { p: n.p, c: n.c, fat: n.fat });
+  },
   pickNum: fd => { const v = +fd.get('kcal'); if (v > 0) addEat(fd.get('slot'), v, `${v} kcal (geschätzt)`, false); },
   set: fd => {
     const it = RUN.items[RUN.i], r = (RUN.res[it.ex] ??= { reps: [] });
@@ -561,6 +657,11 @@ document.addEventListener('submit', e => {
   const f = e.target.dataset.form;
   if (!f) return;
   e.preventDefault(); FORMS[f](new FormData(e.target)); save(); render();
+});
+document.addEventListener('input', e => {
+  if (!('grams' in e.target.dataset) || !FOOD?.sel) return;
+  FOOD.g = +e.target.value || 0;
+  $('#foodPrev').textContent = prevTxt(per(FOOD.sel, FOOD.g));
 });
 document.addEventListener('change', async e => {
   const el = e.target;

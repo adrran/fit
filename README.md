@@ -6,6 +6,7 @@ Reines HTML/JS, kein Build. Daten bleiben im Browser (localStorage), Backup unte
 - Übungen (Stufen leicht → schwer, Animations-Posen `anim`), Trainingspläne A/B: `data/exercises.json`
 - Rezeptbilder: Feld `img` (Emojis) in `data/recipes.json`
 - Gefühl-Fragen und Tipp-Regeln: `data/tips.json`
+- Extra-Lebensmittel (Getränke, Snacks, Restaurant, Durchschnittswerte pro 100 g/ml): `data/foods.json`; online zusätzlich Open Food Facts
 - KI-Coach (optional): eigener Anthropic-API-Key unter ⚙, braucht Internet
 - Rechenlogik: `calc.js`, Tests: `node --test`
 
